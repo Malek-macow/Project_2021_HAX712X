@@ -1,7 +1,14 @@
 # Projet ASLTAM
+[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Naereen/badges)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
 ## Introduction
-Le nom ``asltam`` provient de l'acronyme ASL (une mauvaise lecture de ASF, pour Autoroute du Sud de la France) et des premières lettres des créateurs du package : Thomas CARVAILLO, Alexandre CAPEL et Abdelmalek BOUARROUDJ (appelé aussi Malek). Ce module python a été conçu pour répondre à une problématique sur l'étude de la politique des prix de la compagnie Vinci, en particulier dans la région Occitanie.
+Le nom ``asltam`` provient de l'acronyme ASL (une mauvaise lecture de ASF, pour Autoroute du Sud de la France) et des premières lettres des créateurs du package : Thomas CARVAILLO, Alexandre CAPEL et Abdelmalek BOUARROUDJ (appelé aussi Malek). Ce module python a été conçu pour répondre à une problématique sur l'étude de la politique des prix de la compagnie Vinci, en particulier dans la région Occitanie :
+
+<p align="center">
+  <img src="https://github.com/Eldohrim/Project_2021_HAX712X/blob/main/Beamer/Autoroute.PNG" width="300" title="Autoroute">
+</p>
 
 ## Procédure d'installation
 Pour utiliser pleinement ``asltam``, il faut faire plusieurs installations intermédiaires. Vous pourriez par exemple commencer par créer un environnement anaconda qui contiendra tous les modules nécessaire au bon fonctionnement du package, avec la commande :
@@ -10,12 +17,17 @@ $ conda create --name atm_env
 ```
 dans un terminal python (sous Windows, installer Anaconda3 si ce n'est pas déjà fait et recherchez Anaconda Prompt sur la barre de recherche).
 
-Ensuite, après avoir basculer dans le nouvel environnement python, téléchargez les modules présents dans le fichier ``requirements.txt`` via une commande ``pip``. Par exemple, pour le premier module compilez :
+Ensuite, après avoir basculer dans le nouvel environnement python, téléchargez les modules présents dans le fichier ``requirements.txt`` via la commande :
 ```bash
-$ conda install - n atm_env download=0.3.5
+$ pip install -r /path/to/requirements.txt
 ```
-Ces packages sont importants pour le bon fonctionnement du programme. Après toutes ces manipulations vous pourrez enfin installer notre module avec la commande ``pip`` comme fait précédemment, et ainsi le lancer et l'utiliser comme bon vous semble. 
+Ces packages sont importants pour le bon fonctionnement du programme. Après toutes ces manipulations vous pourrez enfin installer notre module avec la commande :
 
+```bash
+$ pip install -i https://test.pypi.org/simple/ asltam==1.0.0
+```
+et ainsi le lancer et l'utiliser comme bon vous semble. 
+Idée d'importation :
 ```python
 import asltam as atm
 ```
@@ -32,16 +44,20 @@ Le but principal de ce module est l'affichage d'une carte folium, affichant le t
 
 ```python
 import asltam as atm
-geo = 
+geo = atm.load_dist().save_as_geo(index=' ')
+geo = geo[['Latt', 'Long']]
 dist = atm.load_dist().save_as_dist(index=' Nom gare ')
 price = atm.load_price().save_as_price(index=' ')
 start = 'NARBONNE EST'
 target = 'BEZIERS OUEST'
-atm.trajet(geo, dist, price, start, target)
+atm.trajet(start, target, geo, price, dist)
 
 ```
 permettant d'afficher la carte suivante : 
- 
+<p align="center">
+  <img src="https://github.com/Eldohrim/Project_2021_HAX712X/blob/main/Beamer/carte.jpg" width="400" title="Exemple">
+</p>
+
 Une démonstration de cette fonction est faite dans le fichier ``script.py`` si vous voulez le lancez vous même, ou dans la documentation :
 
 ### ``astlam.plot_distribution``
@@ -59,7 +75,7 @@ atm.kde_gare(all=True, prix, dist, bw=1)
 permet d'afficher la distribution des prix au kilomètre selon tout le réseau routier que nous avions à disposition :
 
 <p align="center">
-  <img src="https://github.com/Eldohrim/Project_2021_HAX712X/blob/main/Doc/kde.svg" width="400" title="Exemple">
+  <img src="https://github.com/Eldohrim/Project_2021_HAX712X/blob/main/Beamer/kde.jpg" width="400" title="Exemple">
 </p>
 
 Une démonstration plus complète (avec des widgets !) de cette fonction est faite dans ``script.py``, ou dans la documentation.
@@ -82,6 +98,9 @@ Après avoir tout transformé en fichier ``.csv``, il a fallu trier les données
 ### Accès aux données
 Les fichiers peuvent être consultés sur le git dans le dossier ``./asltam/data``, et les données finales téléchargées à l'aide des classes ``load_dist``, ``load_price``, ou ``load_geo``.
 
+
+## Petite blague pour détendre
+![Carte de blagues](https://readme-jokes.vercel.app/api)
 ## README du projet mid-term
 ### Programme des tâches à effectuer
 
