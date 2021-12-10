@@ -24,7 +24,7 @@ $ pip install -r /path/to/requirements.txt
 Ces packages sont importants pour le bon fonctionnement du programme. Après toutes ces manipulations vous pourrez enfin installer notre module avec la commande :
 
 ```bash
-$ pip install -i https://test.pypi.org/simple/ asltam==1.0.0
+$ pip install -i https://test.pypi.org/simple/ asltam==1.1.0
 ```
 et ainsi le lancer et l'utiliser comme bon vous semble. 
 Idée d'importation :
@@ -53,9 +53,9 @@ target = 'BEZIERS OUEST'
 atm.trajet(start, target, geo, price, dist)
 
 ```
-permettant d'afficher la carte suivante : 
+permettant d'afficher le résultat suivant : 
 <p align="center">
-  <img src="https://github.com/Eldohrim/Project_2021_HAX712X/blob/main/Beamer/carte.jpg" width="400" title="Exemple">
+  <img src="https://github.com/Eldohrim/Project_2021_HAX712X/blob/main/Beamer/carte-gif.gif" width="400" title="Exemple">
 </p>
 
 Une démonstration de cette fonction est faite dans le fichier ``script.py`` si vous voulez le lancez vous même, ou dans la documentation :
@@ -98,6 +98,28 @@ Après avoir tout transformé en fichier ``.csv``, il a fallu trier les données
 ### Accès aux données
 Les fichiers peuvent être consultés sur le git dans le dossier ``./asltam/data``, et les données finales téléchargées à l'aide des classes ``load_dist``, ``load_price``, ou ``load_geo``.
 
+## Création d'une clef
+Afin d'éviter tout problème lors de l'affichage de la carte intéractive, il est nécessaire de créer une clef API personnelle, qu'il faudra donner en paramètre de la fonction trajet.
+
+Pour ce faire, rendez-vous sur https://openrouteservice.org/log-in/
+
+Il est nécessaire de se créer un compte, en se connectant avec Github par exemple.
+
+<p align="center">
+  <img src="https://github.com/Eldohrim/Project_2021_HAX712X/blob/main/Beamer/log.jpg" width="700" title="Exemple">
+</p>
+
+Il suffit ensuite de cliquer sur CREATE TOKEN dans l'onglet TOKEN.
+
+<p align="center">
+  <img src="https://github.com/Eldohrim/Project_2021_HAX712X/blob/main/Beamer/creation.jpg" width="700" title="Exemple">
+</p>
+
+La clef résultante sera dès lors affichée et il suffira la copier lors de l'utilisation de la fonction trajet.
+
+<p align="center">
+  <img src="https://github.com/Eldohrim/Project_2021_HAX712X/blob/main/Beamer//key.jpg" width="800" title="Exemple">
+</p>
 
 ## Petite blague pour détendre
 ![Carte de blagues](https://readme-jokes.vercel.app/api)
@@ -118,3 +140,5 @@ Chaque partie donnera lieu à plusieurs programmes contenus dans notre package f
 ### Répartition des tâches
 
 Le projet étant réparti en trois grands axes, nous allons séparé grossièrement le travail de la sorte : Thomas s'occupera de la carte interactive, Alexandre devra afficher les distributions et enfin Abdelmalek s'occupera de la partie graphe. Bien sûr, les parties étant intrinsèquement liées, certaines choses faites dans une partie seront peut-être utilisées dans une autre : tout le monde aura donc une part de son travail dans chaque axe.
+
+
